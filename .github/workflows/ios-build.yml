@@ -1,0 +1,43 @@
+name: iOS Build & Tests
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install JS dependencies
+        working-directory: mobile-app
+        run: |
+          npm ci
+
+      - name: Install CocoaPods
+        run: |
+          sudo gem install cocoapods
+
+      - name: Install Pods
+        working-directory: mobile-app/ios
+        run: |
+          pod install --repo-update
+
+      - name: Build iOS (simulator)
+        working-directory: mobile-app/ios
+        run: |
+          xcodebuild -workspace SecureFace-Offline.xcworkspace -scheme SecureFace-Offline -sdk iphonesimulator -configuration Debug ONLY_ACTIVE_ARCH=NO CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -quiet
+
+      - name: Run unit tests
+        working-directory: mobile-app
+        run: |
+          npm test --silent
