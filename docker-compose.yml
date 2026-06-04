@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  # LocalStack for local AWS services
+  localstack:
+    image: localstack/localstack:latest
+    ports:
+      - "4566:4566"
+    environment:
+      - SERVICES=dynamodb,apigateway,lambda
+      - DEBUG=1
+      - DATA_DIR=/tmp/localstack/data
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    volumes:
+      - "${TMPDIR}/.localstack:/tmp/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+
+  # Backend API server
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - AWS_REGION=us-east-1
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_ENDPOINT_URL=http://localstack:4566
+      - ATTENDANCE_TABLE=attendance
+      - EMBEDDINGS_TABLE=embeddings
+      - AUDIT_LOG_TABLE=audit_logs
+      - DEVICES_TABLE=devices
+      - JWT_SECRET=${JWT_SECRET}
+      - PORT=3000
+    depends_on:
+      - localstack
+    volumes:
+      - ./backend/src:/app/src
+      - ./backend/dist:/app/dist
+    command: npm run dev
+
+  # Database backup service
+  backup:
+    image: node:18-alpine
+    working_dir: /backup
+    command: echo "Backup service ready"
+    volumes:
+      - ./backups:/backup
+    profiles:
+      - backup
+
+volumes:
+  localstack:
