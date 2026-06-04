@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>CFBundleDevelopmentRegion</key>
+  <string>en</string>
+  <key>CFBundleExecutable</key>
+  <string>$(EXECUTABLE_NAME)</string>
+  <key>CFBundleIdentifier</key>
+  <string>com.secureface.offline</string>
+  <key>CFBundleName</key>
+  <string>SecureFace-Offline</string>
+  <key>CFBundleDisplayName</key>
+  <string>SecureFace-Offline</string>
+  <key>CFBundleVersion</key>
+  <string>1</string>
+  <key>CFBundleShortVersionString</key>
+  <string>1.0</string>
+  <key>UILaunchStoryboardName</key>
+  <string>LaunchScreen</string>
+  <key>NSCameraUsageDescription</key>
+  <string>This app requires camera access for face recognition and liveness checks.</string>
+  <key>NSMicrophoneUsageDescription</key>
+  <string>Microphone access is used for optional audio prompts during registration.</string>
+  <key>NSPhotoLibraryAddUsageDescription</key>
+  <string>Photo library access is required to save captured samples when permitted.</string>
+  <key>UIRequiredDeviceCapabilities</key>
+  <array>
+    <string>camera</string>
+  </array>
+</dict>
+</plist>

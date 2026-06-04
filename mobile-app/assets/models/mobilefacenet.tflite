@@ -1,0 +1,10 @@
+PLACEHOLDER MOBILEFACENET MODEL
+
+This is a placeholder file. Replace with a real quantized `.tflite` model.
+PLACEHOLDER FOR mobilefacenet.tflite
+
+This is a dummy placeholder file to satisfy bundlers during development.
+Replace this file with the real MobileFaceNet TFLite binary before building or testing inference.
+PLACEHOLDER MOBILEFACENET TFLITE FILE
+This file is a placeholder for the MobileFaceNet TFLite model.
+Replace with the real quantized model binary for production builds.

@@ -1,0 +1,10 @@
+PLACEHOLDER FACE DETECTION MODEL
+
+This is a placeholder file. Replace with a real `.tflite` model suitable for short-range detection.
+PLACEHOLDER FOR face_detection_short_range.tflite
+
+This is a dummy placeholder file to satisfy bundlers during development.
+Replace this file with the real face detection TFLite binary before building or testing detection.
+PLACEHOLDER FACE DETECTION TFLITE FILE
+This file is a placeholder for the face_detection_short_range.tflite model.
+Replace with a proper TFLite face detection model binary.

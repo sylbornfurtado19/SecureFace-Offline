@@ -1,0 +1,44 @@
+{
+  "name": "secureface-offline",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "test": "jest",
+    "lint": "eslint . --ext .ts,.tsx",
+    "build:android": "cd android && ./gradlew assembleRelease && cd ..",
+    "fetch-models": "bash ../scripts/download-models.sh",
+    "fetch-models:win": "powershell -ExecutionPolicy Bypass -File ../scripts/download-models.ps1"
+  },
+  "dependencies": {
+    "@react-navigation/bottom-tabs": "^6.5.0",
+    "@react-navigation/native": "^6.1.0",
+    "@react-navigation/native-stack": "^6.9.0",
+    "axios": "^1.6.0",
+    "crypto-js": "^4.1.1",
+    "react": "18.2.0",
+    "react-native": "0.73.0",
+    "react-native-fast-tflite": "1.6.1",
+    "react-native-gesture-handler": "^2.14.0",
+    "react-native-keychain": "^8.1.0",
+    "react-native-mmkv": "^2.11.0",
+    "react-native-safe-area-context": "^4.7.0",
+    "react-native-screens": "^3.29.0",
+    "react-native-sqlite-storage": "^6.0.0",
+    "react-native-vision-camera": "^3.8.0"
+  },
+  "devDependencies": {
+    "@react-native-community/eslint-config": "^3.0.0",
+    "@testing-library/react-native": "12.0.0",
+    "@types/jest": "^29.0.0",
+    "@types/react": "^18.2.0",
+    "@types/react-native": "^0.73.0",
+    "eslint": "^8.0.0",
+    "jest": "^29.0.0",
+    "react-test-renderer": "18.2.0",
+    "ts-jest": "^29.0.0",
+    "typescript": "^5.0.0"
+  }
+}
